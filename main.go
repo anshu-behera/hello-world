@@ -1,6 +1,7 @@
 package main
 
 import (
+	"os"
 	"github.com/gorilla/mux"
 	"time"
 	"io/ioutil"
@@ -19,7 +20,12 @@ func main() {
 		body, _ := ioutil.ReadAll(resp.Body)
 		w.Write(body)
 	}
+
+	myHandler2 := func (w http.ResponseWriter, r *http.Request)  {
+		os.Exit(0)
+	}
 	r.HandleFunc("/",myHandler)
+	r.HandleFunc("/exit",myHandler2 )
 	s := &http.Server{
 		Addr:           ":8085",
 		Handler:        r,
