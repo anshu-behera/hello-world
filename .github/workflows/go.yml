@@ -8,8 +8,8 @@ on:
   workflow_dispatch:
     inputs:
       stage:
-      description: 'stage to deploy'
-      required: true
+        description: 'stage to deploy'
+        required: true
       api_version:
         description: 'API version'
         required: false
