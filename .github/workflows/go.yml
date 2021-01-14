@@ -1,8 +1,6 @@
 name: Go
 
 on:
-  push:
-    branches: [ master ]
   pull_request:
     branches: [ master ]
   workflow_dispatch:
@@ -47,5 +45,5 @@ jobs:
     - name: Docker runs WhaleSay
       run: docker run docker/whalesay cowsay boo 
     - name: Echoing input
-      run: echo ${{github.event.input.stage}}
+      run: echo ${{github.event.inputs.stage}}
    
