@@ -47,5 +47,5 @@ jobs:
     - name: Docker runs WhaleSay
       run: docker run docker/whalesay cowsay boo 
     - name: Echoing input
-      run: echo ${{input.stage}}
+      run: echo ${{github.event.input.stage}}
    
