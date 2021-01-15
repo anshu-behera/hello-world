@@ -31,7 +31,7 @@ jobs:
       id: versioning
       run: |
         apiV=$(echo ${{github.event.inputs.worker_version}}| grep -Po "\d.\d.\d")
-        echo "set-output name=apiV::$apiV" 
+        echo "::set-output name=apiV::$apiV" 
     - name: sets file name
       run : |
         echo ${{ steps.versioning.outputs.apiV}}   
