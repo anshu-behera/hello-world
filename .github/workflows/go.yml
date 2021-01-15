@@ -28,9 +28,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Find Version
+      id: versioning
       run: |
         apiV=$(echo ${{github.event.inputs.worker_version}}| grep -Po "\d.\d.\d")
-        echo $apiV 
+        echo "set-output name=apiV::$apiV" 
+    - name: sets file name
+      run : |
+        echo ${{ steps.versioning.output.apiV}}   
     - name: Set up Go
       uses: actions/setup-go@v2
       with:
