@@ -45,6 +45,6 @@ jobs:
     - name: Docker runs WhaleSay
       run: docker run docker/whalesay cowsay boo 
     - name: Echoing input
-      if: ${{github.event.inputs.worker_version != '3.0.0'}
+      if: ${{github.event.inputs.worker_version != '3.0.0'}}
       run: echo ${{github.event.inputs.stage}}
    
