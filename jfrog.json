@@ -11,7 +11,7 @@
       "flat": "true"
     },
     {
-      "pattern": "core-okapi/okapi/*/*-worker-*.bin",
+      "pattern": "core-okapi/okapi/{version}/{stage}-worker-{version-and-patch}.bin",
       "sortBy": [
         "created"
       ],
@@ -21,7 +21,7 @@
       "flat": "true"
     },
     {
-      "pattern": "core-okapi/okapi/*/*-listener-*.bin",
+      "pattern": "core-okapi/okapi/{version}/{stage}-listener-{version-and-patch}.bin",
       "sortBy": [
         "created"
       ],
