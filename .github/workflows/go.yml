@@ -31,16 +31,23 @@ jobs:
       id: versioning
       run: |
         apiV=$(echo ${{github.event.inputs.api_version}}| grep -Po "\d\d{1,}\.\d{1,}\.\d{1,}")
-        echo "::set-output name=apiV::$apiV" 
+        echo "::set-output name=apiV::$apiV"
+        workerV=$(echo ${{github.event.inputs.worker_version}}| grep -Po "\d\d{1,}\.\d{1,}\.\d{1,}")
+        echo "::set-output name=workerV::$workerV"
+        listenerV=$(echo ${{github.event.inputs.listener_version}}| grep -Po "\d\d{1,}\.\d{1,}\.\d{1,}")
+        echo "::set-output name=listenerV::$listenerV"    
     - name: sets file name
       run : |
         echo ${{ steps.versioning.outputs.apiV}}
     - name: changes jfrog download list
       run: |
-        file=core-okapi\\/okapi\\/${{steps.versioning.outputs.apiV}}\\/${{github.event.inputs.stage}}-api-${{github.event.inputs.api_version}}.bin
-        touch jfrog2.json
-        sed -r 's/core-okapi\/okapi\/\{version\}\/\{stage\}-api-\{version-and-patch\}.bin/'"$file"'/g' jfrog.json > jfrog2.json
-        cat jfrog2.json       
+        apifile=core-okapi\\/okapi\\/${{steps.versioning.outputs.apiV}}\\/${{github.event.inputs.stage}}-api-${{github.event.inputs.api_version}}.bin
+        workerfile=core-okapi\\/okapi\\/${{steps.versioning.outputs.workerV}}\\/${{github.event.inputs.stage}}-api-${{github.event.inputs.worker_version}}.bin
+        listenerfile=core-okapi\\/okapi\\/${{steps.versioning.outputs.listenerV}}\\/${{github.event.inputs.stage}}-api-${{github.event.inputs.listener_version}}.bin        
+        sed -r 's/core-okapi\/okapi\/\{version\}\/\{stage\}-api-\{version-and-patch\}.bin/'"$apifile"'/g' jfrog.json > jfrog.json
+        sed -r 's/core-okapi\/okapi\/\{version\}\/\{stage\}-worker-\{version-and-patch\}.bin/'"$workerfile"'/g' jfrog.json > jfrog.json
+        sed -r 's/core-okapi\/okapi\/\{version\}\/\{stage\}-listener-\{version-and-patch\}.bin/'"$listenerfile"'/g' jfrog.json > jfrog.json                
+        cat jfrog.json       
     - name: Set up Go
       uses: actions/setup-go@v2
       with:
