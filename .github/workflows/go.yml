@@ -34,7 +34,10 @@ jobs:
         echo "::set-output name=apiV::$apiV" 
     - name: sets file name
       run : |
-        echo ${{ steps.versioning.outputs.apiV}}   
+        echo ${{ steps.versioning.outputs.apiV}}
+    - name: changes jfrog download list
+      run: |
+        cat jfrog.json       
     - name: Set up Go
       uses: actions/setup-go@v2
       with:
