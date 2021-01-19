@@ -37,7 +37,7 @@ jobs:
         echo ${{ steps.versioning.outputs.apiV}}
     - name: changes jfrog download list
       run: |
-        file=core-okapi\\/okapi\\/${{{steps.versioning.outputs.apiV}}\\/${{github.event.inputs.stage}}-api-{{github.event.inputs.api_version}}.bin
+        file=core-okapi\\/okapi\\/${{steps.versioning.outputs.apiV}}\\/${{github.event.inputs.stage}}-api-${{github.event.inputs.api_version}}.bin
         touch jfrog2.json
         sed -r 's/core-okapi\/okapi\/\{version\}\/\{stage\}-api-\{version-and-patch\}.bin/'"$file"'/g' jfrog.txt > jfrog2.json
         cat jfrog2.json       
