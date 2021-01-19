@@ -1,7 +1,7 @@
 {
   "files": [
     {
-      "pattern": "core-okapi/okapi/*/*-api-*.bin",
+      "pattern": "core-okapi/okapi/{version}/{stage}-api-{version-and-patch}.bin",
       "sortBy": [
         "created"
       ],
