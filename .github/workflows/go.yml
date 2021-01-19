@@ -30,7 +30,7 @@ jobs:
     - name: Find Version
       id: versioning
       run: |
-        apiV=$(echo ${{github.event.inputs.worker_version}}| grep -Po "\d.\d.\d")
+        apiV=$(echo ${{github.event.inputs.api_version}}| grep -Po "\d\d{1,}\.\d{1,}\.\d{1,}")
         echo "::set-output name=apiV::$apiV" 
     - name: sets file name
       run : |
