@@ -42,8 +42,8 @@ jobs:
     - name: changes jfrog download list
       run: |
         apifile=core-okapi\\/okapi\\/${{steps.versioning.outputs.apiV}}\\/${{github.event.inputs.stage}}-api-${{github.event.inputs.api_version}}.bin
-        workerfile=core-okapi\\/okapi\\/${{steps.versioning.outputs.workerV}}\\/${{github.event.inputs.stage}}-api-${{github.event.inputs.worker_version}}.bin
-        listenerfile=core-okapi\\/okapi\\/${{steps.versioning.outputs.listenerV}}\\/${{github.event.inputs.stage}}-api-${{github.event.inputs.listener_version}}.bin        
+        workerfile=core-okapi\\/okapi\\/${{steps.versioning.outputs.workerV}}\\/${{github.event.inputs.stage}}-worker-${{github.event.inputs.worker_version}}.bin
+        listenerfile=core-okapi\\/okapi\\/${{steps.versioning.outputs.listenerV}}\\/${{github.event.inputs.stage}}-listener-${{github.event.inputs.listener_version}}.bin        
         sed -ri 's/core-okapi\/okapi\/\{version\}\/\{stage\}-api-\{version-and-patch\}.bin/'"$apifile"'/g' jfrog.json 
         sed -ri 's/core-okapi\/okapi\/\{version\}\/\{stage\}-worker-\{version-and-patch\}.bin/'"$workerfile"'/g' jfrog.json
         sed -ri 's/core-okapi\/okapi\/\{version\}\/\{stage\}-listener-\{version-and-patch\}.bin/'"$listenerfile"'/g' jfrog.json                
