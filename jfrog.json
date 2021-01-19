@@ -1,0 +1,34 @@
+{
+  "files": [
+    {
+      "pattern": "core-okapi/okapi/*/*-api-*.bin",
+      "sortBy": [
+        "created"
+      ],
+      "target": "./api/api",
+      "sortOrder": "desc",
+      "limit": 1,
+      "flat": "true"
+    },
+    {
+      "pattern": "core-okapi/okapi/*/*-worker-*.bin",
+      "sortBy": [
+        "created"
+      ],
+      "target": "./worker/worker",
+      "sortOrder": "desc",
+      "limit": 1,
+      "flat": "true"
+    },
+    {
+      "pattern": "core-okapi/okapi/*/*-listener-*.bin",
+      "sortBy": [
+        "created"
+      ],
+      "target": "./listener/listener",
+      "sortOrder": "desc",
+      "limit": 1,
+      "flat": "true"
+    }
+  ]
+}
