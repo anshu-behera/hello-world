@@ -34,5 +34,9 @@ func main() {
 		MaxHeaderBytes: 1 << 20,
 	}
 
-	log.Fatal(s.ListenAndServe())
+	log.Fatal(s.ListenAndServeTLS())
+}
+
+func Foo() int {
+	return 5
 }
